@@ -1,7 +1,7 @@
 import streamlit as st
 
 from stock_info import Stock
-from report_service import investment_report
+from report_service import invesment_report
 from search import stock_search
 
 class SearchResult:
@@ -41,7 +41,7 @@ try:
         st.header("AI 투자 보고서")
         if st.button("보고서 생성"):
             with st.spinner(text="In progress..."):
-                report = investment_report(selected.name, selected.symbol)
+                report = invesment_report(selected.name, selected.symbol)
                 st.success("Done.")
             st.write(report)
 except Exception as e:

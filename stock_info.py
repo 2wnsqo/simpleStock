@@ -9,7 +9,7 @@ class Stock:
     def get_basic_info(self):
         basic_info = pd.DataFrame.from_dict(self.ticker.info, orient="index", columns=["Values"])
         return basic_info.loc[['longName', 'industry', 'sector', 'marketCap', 'sharesOutstanding']].to_markdown()
-
+    
     def get_financial_statement(self):
         return f"""
         ### Quarterly Income Statement
@@ -22,15 +22,12 @@ class Stock:
         {self.ticker.quarterly_cash_flow.loc[['Operating Cash Flow', 'Investing Cash Flow', 'Financing Cash Flow']].to_markdown()}
         """
 def main():
-    if __name__ == "__main__":
-        symbol = Stock("005930.KS")
-
-        print("### Basic Information")
-        print(symbol.get_basic_info())
-
+    if __name__ == "__main__":        
+        stock = Stock('nvda')
+        
+        print("\n### Basic Information")
+        print(stock.get_basic_info())
+        
         print("\n### Financial Statements")
-        print(symbol.get_financial_statement())
-
-
-
-main()
+        print(stock.get_financial_statement())    
+main()        
